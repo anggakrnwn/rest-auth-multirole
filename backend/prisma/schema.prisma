@@ -18,9 +18,10 @@ model user {
   name      String?  @db.VarChar(225)
   email     String   @unique(map: "email") @db.VarChar(225)
   password  String?  @db.VarChar(225)
+  roleId    Int      @db.Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  role      role[]
+  role      role     @relation(fields: [roleId], references: [id])
 
   @@map("users")
 }

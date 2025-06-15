@@ -10,6 +10,12 @@ const findUsers = async (req, res) => {
         id: true,
         name: true,
         email: true,
+        role: {
+          select: {
+            id: true,
+            name: true,
+          }
+        }
       },
       orderBy: {
         id: "desc",
@@ -48,6 +54,7 @@ const createUser = async (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: hashedPassword,
+        roleId: req.body.roleId
       },
     });
 
@@ -76,6 +83,12 @@ const findUserById = async (req, res) => {
         id: true,
         name: true,
         email: true,
+        role: {
+          select: {
+            id: true,
+            name: true,
+          }
+        }
       },
     });
 
